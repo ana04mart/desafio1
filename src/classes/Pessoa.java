@@ -10,7 +10,7 @@ public class Pessoa {
     
     public Pessoa ( Aeronave nave){
         this.nave = nave ;
-    }
+     }
     
     public Aeronave getNave (){
         return nave;
@@ -51,12 +51,33 @@ public class Pessoa {
         }
         
     }
+
+    @Override
+    public String toString(){
+        return String.format("Nome: %s - CPF: %s - nave: %s ", getNome(), getCpf(), getNave());
+    }
     
+    public Pessoa(String nome, String cpf, Aeronave nave) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.nave = nave;
+        nave.setPiloto(this);
+    }
+
+
     public String cumprimentar() {
         return "Olá, desconhecido. Meu nome é " + nome;
     }
 
     public String cumprimentar(String nomeOutraPessoa) {
         return "Olá, " + nomeOutraPessoa + ". Meu nome é " + nome;
+    }
+
+    public void acelerar(){
+        nave.acelerar();
+    }
+    
+    public void acelerar(int limite){
+        nave.acelerar(limite);
     }
 }

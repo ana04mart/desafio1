@@ -5,7 +5,12 @@ public class Aeronave {
         private String numeroSerie;
         private String modelo;
         private Pessoa piloto;
-        
+        private int velocidadeAtual;
+
+        public int getVelocidadeAtual() {
+            return velocidadeAtual;
+        }
+
         public int getQuantidadePassageiros() {
             return quantidadePassageiros;
         }
@@ -38,21 +43,25 @@ public class Aeronave {
             this.piloto = piloto;
         }
         
-        public Aeronave() {}
-    
-        public Aeronave(String numeroSerie) {
+        
+@Override
+        public String toString(){
+     return String.format("modelo: %s - numeroSerie: %s - piloto: %s - quantidadePassageiros: %d", getModelo(), getNumeroSerie(), getPiloto(), getQuantidadePassageiros());
+        }
+
+        public Aeronave(int quantidadePassageiros, String numeroSerie, String modelo) {
+            this.quantidadePassageiros = quantidadePassageiros;
             this.numeroSerie = numeroSerie;
+            this.modelo = modelo;
         }
-    
-        public Aeronave(String numeroSerie, Pessoa piloto) {
-            this.numeroSerie = numeroSerie;
-            this.piloto = piloto;
-        }
-    
-        public Aeronave(Pessoa piloto) {
-            this.piloto = piloto;
-        }
-   
+    void acelerar(){
+        velocidadeAtual ++;
     }
+    void acelerar(int velocidade){
+        for (int i = 0; i < velocidade; i++) {
+        acelerar();
+        };
+    }
+  }
 
 
